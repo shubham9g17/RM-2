@@ -52,11 +52,13 @@ function CollectionItemPreview({ data }) {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-          </tr>
+          {collectionItem.files.map((file, index) => (
+            <tr>
+              <th scope="row">{index + 1}</th>
+              <td>{file.name}</td>
+              <td>{file.sentDate}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
