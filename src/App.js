@@ -1,6 +1,11 @@
 import Admin from "./components/Admin";
+import CollectionPreview from "./components/context/CollectionItemPreviewContext";
 import Preview from "./components/Preview";
+import { useState } from "react";
+
 function App() {
+  const [preview, setPreview] = useState(null);
+
   const collections = {
     collections1: [
       {
@@ -9,12 +14,28 @@ function App() {
         size: 14.5,
         files: [
           {
-            name: "",
-            sentDate: "",
+            name: "File1",
+            sentDate: "22/03/2021",
           },
           {
-            name: "",
-            sentDate: "",
+            name: "File2",
+            sentDate: "22/04/2021",
+          },
+        ],
+        rows: 14000,
+      },
+      {
+        connection: 1,
+        name: "Downloads",
+        size: 14.5,
+        files: [
+          {
+            name: "File1",
+            sentDate: "22/03/2021",
+          },
+          {
+            name: "File2",
+            sentDate: "22/04/2021",
           },
         ],
         rows: 14000,
@@ -25,28 +46,12 @@ function App() {
         size: 14.5,
         files: [
           {
-            name: "",
-            sentDate: "",
+            name: "File1",
+            sentDate: "22/03/2021",
           },
           {
-            name: "",
-            sentDate: "",
-          },
-        ],
-        rows: 14000,
-      },
-      {
-        connection: 1,
-        name: "Api Logs",
-        size: 14.5,
-        files: [
-          {
-            name: "",
-            sentDate: "",
-          },
-          {
-            name: "",
-            sentDate: "",
+            name: "File2",
+            sentDate: "22/04/2021",
           },
         ],
         rows: 14000,
@@ -55,16 +60,16 @@ function App() {
     collections2: [
       {
         connection: 1,
-        name: "Api Logs",
+        name: "Downloads",
         size: 14.5,
         files: [
           {
-            name: "",
-            sentDate: "",
+            name: "File1",
+            sentDate: "22/03/2021",
           },
           {
-            name: "",
-            sentDate: "",
+            name: "File2",
+            sentDate: "22/04/2021",
           },
         ],
         rows: 14000,
@@ -75,12 +80,12 @@ function App() {
         size: 14.5,
         files: [
           {
-            name: "",
-            sentDate: "",
+            name: "File1",
+            sentDate: "22/03/2021",
           },
           {
-            name: "",
-            sentDate: "",
+            name: "File2",
+            sentDate: "22/04/2021",
           },
         ],
         rows: 14000,
@@ -89,14 +94,18 @@ function App() {
   };
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-9">
-          <Admin collections={collections} />
+      <CollectionPreview.Provider
+        value={{ collection: preview, setCollection: setPreview }}
+      >
+        <div className="row">
+          <div className="col-md-9">
+            <Admin collections={collections} />
+          </div>
+          <div className="col-md-3">
+            <Preview />
+          </div>
         </div>
-        <div className="col-md-3">
-          <Preview />
-        </div>
-      </div>
+      </CollectionPreview.Provider>
     </div>
   );
 }

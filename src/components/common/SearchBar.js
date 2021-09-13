@@ -1,11 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSearch,
-  faFolder,
-  faFileExcel,
-  faEllipsisV,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 function SearchBar({ search, onChange }) {
   return (
     <div className="input-group rounded">

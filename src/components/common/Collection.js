@@ -7,8 +7,8 @@ function Collection({ data, name }) {
       {name}
       <div className="row">
         {data.map((d, index) => (
-          <div className="col" key={index}>
-            <CollectionItem />
+          <div className="col-4" key={index}>
+            <CollectionItem data={d} />
           </div>
         ))}
       </div>
